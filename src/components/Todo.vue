@@ -44,7 +44,8 @@
         bulma
       </a> -->
       <a class="panel-block" v-for="(todo, index) in todos" :key="index"
-             @click="$router.push(`/todo/${index}`)">
+         @click="$router.push(`/todo/${index}`)"
+         @touchstart="touchClick($event, index)" :class="{selected: selected === index}">
         <label>
           <input type="checkbox" @click.stop>
           {{ todo }}
@@ -84,6 +85,7 @@ export default {
   data() {
     return {
       newTodo: '',
+      selected: null,
     };
   },
   computed: {
@@ -92,6 +94,13 @@ export default {
     },
   },
   methods: {
+    touchClick(e, index) {
+      e.preventDefault();
+      if (this.selected === index) {
+        e.target.click();
+      }
+      this.selected = index;
+    },
     addTodo() {
       this.$store.commit('addTodo', this.newTodo);
       this.newTodo = '';
@@ -120,8 +129,12 @@ a.panel-block > label {
 a.panel-block > ul {
   display: none;
 }
-a.panel-block:hover > ul {
+a.panel-block:hover > ul,
+a.panel-block.selected > ul {
   display: block;
+}
+a.panel-block.selected {
+  background-color: whitesmoke;
 }
 a.panel-block > ul > li {
   display: inline-block;
