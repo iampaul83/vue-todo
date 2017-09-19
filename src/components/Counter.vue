@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>{{ count }}</p>
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
+    <button class="button" @click="increment">+</button>
+    <button class="button" @click="decrement">-</button>
   </div>
 </template>
 

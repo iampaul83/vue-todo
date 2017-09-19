@@ -6,6 +6,24 @@ Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
 
+const myPlugin = (store) => {
+  // called when the store is initialized
+  const stateJSON = localStorage.getItem('vue-todo');
+  if (stateJSON) {
+    try {
+      const state = JSON.parse(stateJSON);
+      store.replaceState(state);
+    } finally {
+      //
+    }
+  }
+  store.subscribe((mutation, state) => {
+    localStorage.setItem('vue-todo', JSON.stringify(state));
+    // called after every mutation.
+    // The mutation comes in the format of `{ type, payload }`.
+  });
+};
+
 export default new Vuex.Store({
   strict: debug,
   state: {
@@ -22,4 +40,5 @@ export default new Vuex.Store({
   modules: {
     todo,
   },
+  plugins: [myPlugin],
 });

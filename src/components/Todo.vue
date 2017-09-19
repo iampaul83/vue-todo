@@ -1,16 +1,61 @@
 <template>
   <div>
     <form @submit.prevent="addTodo">
-      <label>Add todo 
-        <input type="text" v-model="newTodo">
-      </label>
+      <div class="field">
+        <label class="label">Add todo</label>
+        <div class="control">
+          <input class="input is-primary" type="text" v-model="newTodo">
+        </div>
+      </div>
     </form>
-    <ul>
-      <li v-for="(todo, index) in todos" :key="index"
-          @click="$router.push(`/todo/${index}`)">
-          {{ todo }}
-      </li>
-    </ul>
+    <!-- <h3 class="subtitle is-3">Todos</h3>
+    <div class="box">
+      <ul>
+        <li v-for="(todo, index) in todos" :key="index"
+            @click="$router.push(`/todo/${index}`)">
+            {{ todo }}
+        </li>
+      </ul>
+    </div> -->
+    <nav class="panel" style="margin-top: 20px;">
+      <p class="panel-heading">Todos</p>
+
+      <div class="panel-block">
+        <p class="control has-icons-left">
+          <input class="input is-small" type="text" placeholder="search">
+          <span class="icon is-small is-left">
+            <i class="fa fa-search"></i>
+          </span>
+        </p>
+      </div>
+
+      <!-- <p class="panel-tabs">
+        <a class="is-active">all</a>
+        <a>public</a>
+        <a>private</a>
+        <a>sources</a>
+        <a>forks</a>
+      </p> -->
+
+      <!-- <a class="panel-block is-active">
+        <span class="panel-icon">
+          <i class="fa fa-book"></i>
+        </span>
+        bulma
+      </a> -->
+      <label class="panel-block" v-for="(todo, index) in todos" :key="index"
+             @click="$router.push(`/todo/${index}`)">
+        <input type="checkbox" @click.stop>
+        {{ todo }}
+      </label>
+
+      <!-- <div class="panel-block">
+        <button class="button is-primary is-outlined is-fullwidth">
+          reset all filters
+        </button>
+      </div> -->
+    </nav>
+    
   </div>
 </template>
 

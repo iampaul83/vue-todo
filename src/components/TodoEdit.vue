@@ -1,9 +1,13 @@
 <template>
   <div>
-    <form @submit.prevent="$router.go(-1)">
-      <label>Edit  todo 
-        <input ref="input" type="text" v-model="todo" @input="editTodo">
-      </label>
+     <form @submit.prevent="$router.go(-1)">
+      <div class="field">
+        <label class="label">Edit todo</label>
+        <div class="control">
+          <input ref="input" class="input is-primary" type="text"
+                 v-model="todo" @input="editTodo">
+        </div>
+      </div>
     </form>
   </div>
 </template>
