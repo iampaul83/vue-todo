@@ -9,6 +9,7 @@ import store from '@/store';
 Vue.use(Router);
 
 export default new Router({
+  linkExactActiveClass: 'is-active',
   routes: [
     {
       path: '/',

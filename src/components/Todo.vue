@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="column is-half">
     <form @submit.prevent="addTodo">
       <div class="field">
         <label class="label">Add todo</label>
@@ -43,11 +43,30 @@
         </span>
         bulma
       </a> -->
-      <label class="panel-block" v-for="(todo, index) in todos" :key="index"
+      <a class="panel-block" v-for="(todo, index) in todos" :key="index"
+             @click="$router.push(`/todo/${index}`)">
+        <label>
+          <input type="checkbox" @click.stop>
+          {{ todo }}
+        </label>
+        <ul>
+          <li>
+            <span class="icon">
+              <i class="fa fa-thumb-tack"></i>
+            </span>
+          </li>
+          <li>
+            <span class="icon">
+              <i class="fa fa-trash-o"></i>
+            </span>
+          </li>
+        </ul>
+      </a>
+      <!-- <label class="panel-block" v-for="(todo, index) in todos" :key="index"
              @click="$router.push(`/todo/${index}`)">
         <input type="checkbox" @click.stop>
         {{ todo }}
-      </label>
+      </label> -->
 
       <!-- <div class="panel-block">
         <button class="button is-primary is-outlined is-fullwidth">
@@ -82,11 +101,32 @@ export default {
 </script>
 
 <style scoped>
-li {
+/* li {
   cursor: pointer;
 }
 li:hover {
   background-color: hsl(171, 100%, 41%);
   color: #fff;
+} */
+a.panel-block > label {
+  cursor: pointer;
+}
+a.panel-block {
+  display: flex;
+}
+a.panel-block > label {
+  flex: 1;
+}
+a.panel-block > ul {
+  display: none;
+}
+a.panel-block:hover > ul {
+  display: block;
+}
+a.panel-block > ul > li {
+  display: inline-block;
+}
+a.panel-block > ul > li:hover {
+  color: hsl(171, 100%, 41%);
 }
 </style>

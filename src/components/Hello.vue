@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="column is-half">
     <h1 class="title">{{ msg }}</h1>
   </div>
 </template>

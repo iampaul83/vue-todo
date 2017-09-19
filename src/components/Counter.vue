@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="column is-half">
     <p>{{ count }}</p>
     <button class="button" @click="increment">+</button>
     <button class="button" @click="decrement">-</button>

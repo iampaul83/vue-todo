@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="column is-half">
      <form @submit.prevent="$router.go(-1)">
       <div class="field">
         <label class="label">Edit todo</label>
